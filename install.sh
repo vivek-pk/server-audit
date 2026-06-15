@@ -12,8 +12,8 @@ SERVICE_DIR="/etc/systemd/system"
 SERVICE_NAME="security-scanner.service"
 
 # GitHub repo (change these to your actual repo)
-GITHUB_OWNER="your-org"
-GITHUB_REPO="security-scanner"
+GITHUB_OWNER="vivek-pk"
+GITHUB_REPO="server-audit"
 GITHUB_RELEASE="latest"
 
 # Colors

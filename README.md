@@ -30,7 +30,7 @@ make build
 Run the interactive installer on any Linux server:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/your-org/security-scanner/main/install.sh | sudo bash
+curl -fsSL https://raw.githubusercontent.com/vivek-pk/server-audit/main/install.sh | sudo bash
 ```
 
 The installer will:
