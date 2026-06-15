@@ -1,0 +1,20 @@
+# Security Scanner Configuration
+interval: "1h"
+timeout_per_check: "30s"
+
+webhook:
+  url: "https://hooks.example.com/security"
+  timeout: "30s"
+  secret: ""
+  max_retries: 3
+  retry_base_delay: "5s"
+
+checks:
+  kernel: true
+  users: true
+  permissions: true
+  ssh: true
+  firewall: true
+  logs: true
+  filesystem: true
+  containers: true
