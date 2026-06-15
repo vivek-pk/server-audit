@@ -82,27 +82,12 @@ download() {
     fi
 }
 
-# Fetch the latest release tag from GitHub API
-get_latest_release_tag() {
-    local api_url="https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/releases/latest"
-    local tag
-    tag=$(curl -s "$api_url" | grep '"tag_name":' | sed -E 's/.*"tag_name": "([^"]+)".*/\1/')
-    echo "$tag"
-}
-
-# Try to download pre-built binary from GitHub releases
+# Try to download pre-built binary from GitHub releases using the /latest/download/ redirect URL.
 download_binary() {
-    local tag
-    tag=$(get_latest_release_tag)
-    if [[ -z "$tag" || "$tag" == "null" ]]; then
-        log_warn "Could not determine latest release tag."
-        return 1
-    fi
-
-    local binary_url="https://github.com/${GITHUB_OWNER}/${GITHUB_REPO}/releases/download/${tag}/${BINARY_NAME}-${OS}-${ARCH}"
+    local binary_url="https://github.com/${GITHUB_OWNER}/${GITHUB_REPO}/releases/latest/download/${BINARY_NAME}-${OS}-${ARCH}"
     local tmp_binary="/tmp/${BINARY_NAME}"
 
-    log_info "Attempting to download pre-built binary (tag: $tag)..."
+    log_info "Attempting to download pre-built binary..."
     log_info "URL: $binary_url"
 
     if download "$binary_url" "$tmp_binary" 2>/dev/null; then
